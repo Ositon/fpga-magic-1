@@ -65,7 +65,7 @@ signal SEL_REG : std_logic_vector(0 to 7);
 
 begin
 	-- Process describing register A
-	process (L_A_HI,L_A_LO)
+	process (L_A_HI,L_A_LO,Z)
 	begin		
 		-- Load Low byte
 		if rising_edge(L_A_LO) then
@@ -79,7 +79,7 @@ begin
 	end process;
 	
 	-- Process describing register B
-	process (L_B_HI,L_B_LO)
+	process (L_B_HI,L_B_LO,Z)
 	begin		
 		-- Load Low byte
 		if rising_edge(L_B_LO) then
@@ -93,7 +93,7 @@ begin
 	end process;
 	
 	-- Process describing register C
-	process (L_C)
+	process (L_C,Z)
 	begin		
 		-- Load Register C with Z
 		if rising_edge(L_C) then
@@ -102,7 +102,7 @@ begin
 	end process;
 	
 	-- Process describing register DP
-	process (L_DP)
+	process (L_DP,Z)
 	begin		
 		-- Load Register DP with Z
 		if rising_edge(L_DP) then
@@ -111,7 +111,7 @@ begin
 	end process;
 	
 	-- Process describing register SP
-	process (L_SP)
+	process (L_SP,Z)
 	begin		
 		-- Load Register SP with Z
 		if rising_edge(L_SP) then
@@ -120,7 +120,7 @@ begin
 	end process;
 	
 	-- Process describing register SSP
-	process (L_SSP)
+	process (L_SSP,Z)
 	begin		
 		-- Load Register SSP with Z
 		if rising_edge(L_SSP) then
@@ -129,7 +129,7 @@ begin
 	end process;
 	
 	-- Process describing register PC
-	process (L_PC)
+	process (L_PC,Z)
 	begin		
 		-- Load Register PC with Z
 		if rising_edge(L_PC) then
@@ -138,7 +138,7 @@ begin
 	end process;
 	
 	-- Process describing register TPC
-	process (COMMIT)
+	process (COMMIT,L)
 	begin 		
 		-- Load Register TPC with L (Itself)
 		if rising_edge(COMMIT) then
@@ -161,6 +161,6 @@ begin
 		  REG_SSP when "11111011",
 		  REG_PC  when "11111101",
 		  REG_TPC when "11111110",
-		  "ZZZZZZZZZZZZZZZZ" when others;
+		  (OTHERS => 'Z') when others; -- "ZZZZZZZZZZZZZZZZ" when others;
 end Behavioral;
 

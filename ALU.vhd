@@ -157,7 +157,7 @@ begin
 				ALUV <= '0';
 		end case;
 		
-		-- Deal with DO_RSHIFT (Remember that the now the MSB is 0 Big endian
+		-- Deal with DO_RSHIFT (Remember that now the MSB is 0 Big endian
 		if DO_RSHIFT = '1' then
 			-- Z(0)=0 Z(1)=ALU(0) Z(2)=ALU(1) Z(3)=ALU(2) Z(4)=ALU(3) Z(5)=ALU(4) Z(6)=ALU(5) Z(7)=ALU(6)
 			Z(0) <= '0';
